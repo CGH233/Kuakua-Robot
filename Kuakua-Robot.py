@@ -1,7 +1,3 @@
-"""
-    WeChat KUAKUA_Robot v0.1
-"""
-
 # -*- coding:utf-8 -*- 
 
 import itchat, re
@@ -9,9 +5,6 @@ from itchat.content import *
 import random
 import json
 
-"""
-    Constants
-"""
 
 REPLY = {'夸我': ['你真是太优秀！',
 		'啥也不说了，夸！',
@@ -55,7 +48,6 @@ def text_reply(msg):
         print('Who sent it: %s' % username)
 
         normal_match = re.search('夸我|求夸|夸一下|夸|鼓励|来', msg['Text'])
-        #special_match = 
 
         match = normal_match
 
@@ -66,7 +58,6 @@ def text_reply(msg):
                 print('夸我 is: %s' % (normal_match is not None))
                 randomIdx = random.randint(0, len(REPLY['夸我']) - 1)
                 itchat.send('@' + '%s\n%s' % (username, REPLY['夸我'][randomIdx]), msg['FromUserName'])
-         #   if special_match:
             
         print('isAt is:%s' % msg['isAt'])
 
