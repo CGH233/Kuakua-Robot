@@ -5,7 +5,6 @@ from itchat.content import *
 import random
 import json
 
-
 REPLY = {'夸我': ['你真是太优秀！',
 		'啥也不说了，夸！',
 		'每天看到你心情好呢！',
@@ -38,7 +37,6 @@ REPLY = {'夸我': ['你真是太优秀！',
              '一切都会好起来的!',
 		     '没什么好说的了，我送你一道彩虹屁吧！']}
 
-
          
 @itchat.msg_register([TEXT], isGroupChat=True)
 def text_reply(msg):
@@ -66,6 +64,6 @@ def text_reply(msg):
             itchat.send('@' + '%s\n%s' % (username, REPLY['default'][randomIdx]), msg['FromUserName'])
             print('-+-+'*5)
 
-itchat.auto_login(enableCmdQR=2, hotReload=True)
+itchat.auto_login(enableCmdQR=True, hotReload=True)
 itchat.run()
 
