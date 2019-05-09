@@ -18,9 +18,9 @@ def words_list(text):
     return tags
 
 def choose_answer(title, match, username, msg):
-    print('-+-+' * 5)
-    print('Message content:%s' % msg['Content'])
-    print('match is: %s' % (match is not None))
+    #print('-+-+' * 5)
+    #print('Message content:%s' % msg['Content'])
+    #print('match is: %s' % (match is not None))
     randomIdx = random.randint(0, len(REPLY[title]) - 1)
     itchat.send('@' + '%s\n%s' % (username, REPLY[title][randomIdx]), msg['FromUserName'])
 
@@ -34,15 +34,15 @@ def random_answer(username, msg):
 @itchat.msg_register([TEXT], isGroupChat=True)
 def text_reply(msg):
     if msg['User']['NickName'] == '数舆夸夸群':
-        print('Message from: %s' % msg['User']['NickName'])
+        #print('Message from: %s' % msg['User']['NickName'])
         username = msg['ActualNickName']
-        print('Who sent it: %s' % username)        
+        #print('Who sent it: %s' % username)        
         text = msg['Text']
         if not text:
             random_answer(username, msg)
             return 
         words = words_list(text)
-        print(words)
+        #print(words)
         for word in words:
             for title in titles:
                 match = re.search(word, title)
@@ -50,8 +50,8 @@ def text_reply(msg):
                     choose_answer(title, match, username, msg)
                     return
         random_answer(username, msg)
-        print('isAt is:%s' % msg['isAt'])
-        print('-+-+'*5)
+        #print('isAt is:%s' % msg['isAt'])
+        #print('-+-+'*5)
 
 itchat.auto_login(enableCmdQR=True, hotReload=True)
 itchat.run()
