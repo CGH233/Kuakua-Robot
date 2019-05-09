@@ -11,20 +11,7 @@ with open('./douban/kuakua.json', 'r') as l:
     REPLY = json.load(l)[0]
 
 titles = list(REPLY.keys())
-'''
-def stopwordslist(filepath):
-    stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]  
-    return stopwords  
-                              
-def words_list(sentence):  
-    word_list = []
-    words = jieba.cut(sentence.strip())  
-    stopwords = stopwordslist('./stopwords.txt')
-    for word in words:
-        if word not in stopwords:
-            word_list.append(word)
-    return word_list
-'''
+
 def words_list(text):
     jieba.analyse.set_stop_words('./stopwords/百度停用词表.txt')
     tags = jieba.analyse.extract_tags(text,20)
